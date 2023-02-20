@@ -1,6 +1,6 @@
 {
   "name": "electron-updater-ui",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": true,
   "main": "public/electron.js",
   "homepage": "./",
@@ -28,10 +28,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron:serve": "concurrently -k \"cross-env BROWSER=none yarn start\" \"yarn electron:start\"",
-    "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/main.js",
+    "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/electron.js",
     "electron:start": "wait-on tcp:3004 && electron .",
     "build:prod": "react-scripts build && electron-builder --win",
-    "build:publish": "set GH_TOKEN=<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> && react-scripts build && electron-builder --win --publish always"
+    "build:publish": "set GH_TOKEN=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 && react-scripts build && electron-builder --win --publish always"
   },
   "build": {
     "appId": "com.autoupdater.demo",

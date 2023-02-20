@@ -32,6 +32,8 @@ const createWindow = () => {
     if (!isDev) {
         autoUpdater.checkForUpdates();
     };
+
+    autoUpdater.checkForUpdates();
 };
 
 // This method will be called when Electron has finished
