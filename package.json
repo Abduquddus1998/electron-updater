@@ -1,7 +1,9 @@
 {
   "name": "electron-updater-ui",
-  "version": "1.0.2",
-  "private": true,
+  "version": "1.0.4",
+  "productName": "Electron updater",
+  "description": "Simple react electron app",
+  "author": "Abdukuddus Azizov",
   "main": "public/electron.js",
   "homepage": "./",
   "repository": {
@@ -23,7 +25,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "concurrently \"cross-env BROWSER=none react-scripts start\" \"wait-on http://localhost:3004 && electron .\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -31,20 +33,28 @@
     "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/electron.js",
     "electron:start": "wait-on tcp:3004 && electron .",
     "build:prod": "react-scripts build && electron-builder --win",
-    "build:publish": "set GH_TOKEN=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 && react-scripts build && electron-builder --win --publish always"
+    "build:publish": "set GH_TOKEN=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 && react-scripts build && electron-builder --win --publish always",
+    "package": "yarn build && electron-builder build --win -c.extraMetadata.main=build/electron.js --publish never",
+    "publish": "electron-builder build --win --publish always"
   },
   "build": {
-    "appId": "com.autoupdater.demo",
-    "productName": "Autoupdater Demo",
+    "appId": "com.react-electron-cra",
+    "productName": "Simple React Electron App",
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
     "directories": {
-      "output": "electron-build",
       "buildResources": "resources"
     },
-    "win": {
-      "publish": [
-        "github"
-      ]
-    }
+    "publish": [{
+      "provider": "github",
+      "owner": "Abduquddus1998",
+      "repo": "electron-updater",
+      "token": "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"
+    }]
   },
   "eslintConfig": {
     "extends": [
